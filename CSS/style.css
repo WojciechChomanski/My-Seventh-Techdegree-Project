@@ -1,0 +1,891 @@
+/* Universal selector ensures that all elements use border-box sizing, 
+   which includes padding and border in the element's total width and height,
+   and sets the default margin of all elements to 0. */
+   * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  /* Sets up the main layout of the body using CSS grid, defining specific areas for header, navigation, and main content,
+     ensures the body takes up the full viewport height. */
+  body {
+    display: grid;
+    grid-template-areas: 
+      'header'
+      'nav'
+      'main';
+    grid-template-rows: auto auto 1fr;
+    margin: 0;
+    height: 100vh;
+  }
+  
+  /* Styles the header area with flexibility and spacing between elements,
+     applies a background color, and centers content vertically and spaced evenly horizontally. */
+  header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7477BF;
+    padding: 1rem;
+    color: white;
+  }
+  
+  /* Assigns the main content to its designated grid area. */
+  main {
+    grid-area: main;
+  }
+  
+  /* Normalizes the font weight of the main heading within the logo to prevent bold styling. */
+  #logo h1 {
+    font-weight: normal; 
+  }
+  
+  /* Emphasizes part of the logo by making it bold. */
+  #logo strong {
+    font-weight: bold; 
+  }
+  
+  /* Ensures a specific part of the logo maintains normal font weight for stylistic consistency. */
+  #logo span {
+    font-weight: normal; 
+  }
+  
+  /* Adjusts the vertical alignment and size of superscript elements in the logo for better visual hierarchy. */
+  #logo sup {
+    vertical-align: super; 
+    font-size: 0.7rem;
+  }
+  
+  /* Flexbox layout for notification icon to align it to the end and center it vertically, allowing it to grow to fill the space. */
+  #bell {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  /* Provides a smooth transition effect for the icon, enhancing the interactivity of the element. */
+  #icon svg {
+    transition: all 0.3s ease;
+  }
+  
+  /* Changes the icon's color to white and enlarges it upon hovering to indicate interactivity. */
+  #icon:hover svg {
+    fill: rgb(255, 255, 255);
+    transform: scale(1.1);
+  }
+  
+  /* Styles the notification button with a transparent background and custom padding,
+     removing the default border and changing the cursor to a pointer to indicate it's clickable. */
+  #notificationButton {
+    position: relative;
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white; 
+  }
+  
+  /* Styles the notification badge with absolute positioning to float over the button,
+     using green background to highlight new notifications and rounded corners for aesthetic appeal. */
+  #notificationBadge {
+    position: absolute;
+    top: -5px;
+    right: 15px;
+    background-color: rgb(26, 200, 26);
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+  }
+  
+  /* Utility class for toggling visibility of elements, such as popups or hidden messages. */
+  .hidden {
+    display: none;
+  }
+  
+  /* Styles the popup window with absolute positioning to overlay content,
+     specifies dimensions and background styling to differentiate from other content. */
+  #popupWindow {
+    position: absolute;
+    top: 15vw; 
+    right: 1vw; 
+    left: 1vw;
+    height: 95vw;
+    width: 95vw; 
+    background-color: white;
+    border: 2px solid #7477BF;
+    padding: 0;
+    z-index: 1;
+  }
+  
+  /* Ensures text within popup windows adjusts to the content's size, allowing for dynamic text content. */
+  #popupWindow p {
+    height: auto;
+    width: auto;
+  }
+  
+  /* Defines the style for headings within popup notifications, setting text alignment, color, and emphasis. */
+  .popup-heading {
+    font-size: 1.2em;
+    color: black;
+    font-weight: bold;
+    background-color: rgb(235, 185, 235);
+    margin-bottom: 0;
+    text-align: center;
+  }
+  
+  /* Sets styling for individual notification messages within the popup, including text color, spacing, and a bottom border for separation. */
+  .popup-notification {
+    color: #666;
+    margin-bottom: 0.5em;
+    padding: 6px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Styles the button within the popup window for consistency with the overall design theme, ensuring it is visually centered and clickable. */
+  #popupWindow button {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 80%;
+    padding: 0.5em;
+    color: white;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+  }
+
+/* Styles paragraphs within the popup window to dynamically adjust size based on content. */
+#popupWindow p {
+  height: auto;
+  width: auto;
+}
+
+/* Styling for the heading in popup windows, includes font size, weight, color, and background for emphasis and visibility. */
+.popup-heading {
+  font-size: 1.2em;
+  color: black;
+  font-weight: bold;
+  background-color: rgb(235, 185, 235); /* Light purple background for distinction */
+  margin-bottom: 0; /* Removes bottom margin for tighter text grouping */
+  text-align: center; /* Centers text for a balanced appearance */
+}
+
+/* Styles for individual notifications within the popup to enhance readability and structure. */
+.popup-notification {
+  color: #666; /* Dark grey color for text readability */
+  margin-bottom: 0.5em; /* Provides spacing between notification messages */
+  padding: 6px; /* Padding for text content within notifications */
+  border-bottom: 1px solid #ddd; /* Separator between messages */
+}
+
+/* Styles the button within the popup for user interactions, ensuring it's visually centered and accessible. */
+#popupWindow button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block; /* Makes the button block level for better control over width */
+  width: 80%; /* Width relative to its container for consistent sizing */
+  padding: 0.5em; /* Padding around the button's text */
+  color: white; /* Text color for contrast */
+  background-color: #333; /* Dark background for the button */
+  border: none; /* Removes border for a clean, flat design */
+  cursor: pointer; /* Changes cursor to pointer to indicate clickable area */
+}
+
+/* Flexbox layout for the profile area, aligns items centrally and positions them at the end of the container. */
+#profile {
+  display: flex;
+  align-items: center; /* Vertically centers the items */
+  justify-content: flex-end; /* Aligns the profile to the right side of its container */
+  border-left: 0.5px dotted white; /* Subtle separator from other content */
+  padding-left: 10px; /* Spacing from the left border */
+}
+
+/* Styles for profile images to ensure they are rounded and properly sized for UI consistency. */
+#profile img {
+  border-radius: 50%; /* Makes the image round */
+  height: 50px; /* Fixed height for uniformity */
+  width: 50px; /* Fixed width to match height, maintaining aspect ratio */
+  margin-right: 10px; /* Right margin for spacing away from adjacent text or elements */
+}
+
+/* Styling for headers (h4) within components, ensuring text does not wrap and maintains a uniform appearance. */
+h4 {
+  font-size: 1.1em;
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+}
+
+/* Styles the navigation area, assigning it to a specific grid area and setting its background color. */
+nav {
+  grid-area: nav; /* Specifies the grid area for navigation */
+  background-color: #4D4C72; /* Dark purple/blue background for navigation */
+}
+
+/* Flexible box layout for list items within navigation to distribute space evenly and center items both horizontally and vertically. */
+ul {
+  padding: 10px; /* Padding around the list */
+  display: flex;
+  flex-direction: row; /* Horizontal layout for list items */
+  justify-content: space-around; /* Even spacing between items */
+  align-items: center; /* Vertical alignment of items */
+  list-style-type: none; /* Removes default list styling */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Enhances the interaction for list items by enlarging images on hover, indicating clickable elements. */
+li:hover img {
+  transform: scale(1.1);
+}
+
+/* Sets a fixed size for images within the navigation to ensure consistency across the UI. */
+nav img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Styles the top part of the dashboard, using flexbox for alignment and setting its designated area. */
+.dashboard-top {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 10px;
+  height: 60px;
+  grid-area: dashboard-top;
+}
+
+/* Aligns the headline within the dashboard top area to ensure it is vertically centered and properly spaced. */
+.headline {
+  align-self: center;
+  padding-left: 15px;
+  width: 30%;
+}
+
+/* Defines the tab component's width, background, and borders, serving as a visual separation within the dashboard. */
+.tab {
+  width: 70%;
+  background-color: #efeff5;
+  border-bottom: 1px solid darkgrey;
+  border-left: 1px solid darkgrey;
+}
+
+/* Styles the alert banner with a distinct background, rounded corners, and internal spacing for its content. */
+.alert-banner {
+  background-color: #7477BF;
+  border-radius: 5px;
+  width: 95%;
+  height: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  grid-area: alert-banner;
+}
+
+/* Provides styling for the close button within the alert banner to match the header's color theme. */
+.close-btn {
+  background-color: #7477BF;
+  color: #fff;
+  border: 0;
+}
+
+/* Assigns the traffic section to its designated grid area. */
+.traffic {
+  grid-area: traffic;
+}
+
+/* Assigns the daily stats section to its designated grid area. */
+.daily {
+  grid-area: daily;
+}
+
+/* Assigns the mobile stats section to its designated grid area. */
+.mobile {
+  grid-area: mobile;
+}
+
+/* Assigns the new members section to its designated grid area. */
+.new-members {
+  grid-area: new-members;
+}
+
+/* Assigns the recent activity section to its designated grid area. */
+.recent-activity {
+  grid-area: recent-activity;
+}
+
+/* Sets up the social media stats container with vertical spacing and alignment. */
+.social-container {
+  margin-top: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid darkgrey;
+  grid-area: social-container;
+}
+
+/* Styles for the traffic navigation link, making it clickable with visual feedback on hover. */
+.traffic-nav-link {
+  color: #000;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Styles for the selected traffic navigation link, enhancing visibility with a distinct background color. */
+.traffic-nav-link.selected {
+  background-color: rgb(57, 196, 150);
+  color: #fff;
+}
+
+/* Provides a visual cue for traffic navigation links that are not selected when hovered over. */
+.traffic-nav-link:not(.selected):hover {
+  background-color: yellow;
+}
+
+/* Container styling for widgets that might need to stretch across the full width of their container. */
+.widget-container-full {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 2px solid darkgrey;
+}
+
+/* Container styling for widgets that occupy half the space, ensuring content is centered and well-spaced. */
+.widget-container-half {
+  border-bottom: 2px solid darkgrey;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Padding for canvas elements to ensure they are inset slightly from their container edges. */
+canvas {
+  padding: 2%;
+}
+
+
+/* Container for social media cards, using flex layout to align items vertically and distribute space. */
+.social-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;      
+}
+
+/* General styling for headings to align text to the left with specified margins for visual spacing. */
+h3 {
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 10px;  
+}
+
+/* Additional margin for headings within specific sections for consistent visual rhythm across the page. */
+.daily h3, .mobile h3, .new-members h3, .recent-activity h3, .message-user h3 {
+  margin-top: 10px;
+}
+
+/* Styling for individual social cards, with background, border, and alignment properties. */
+.social-card {
+  background-color: lightgrey; 
+  border: solid darkgrey;
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Styles for SVG icons within social cards, setting size and fill color. */
+.social-image svg {
+  width: 70px;
+  height: 70px;
+  fill: #7477BF; 
+}
+
+/* Margins and padding for elements within social images and text for better spacing and readability. */
+.social-image, .social-text {
+  margin: 0 10px;
+  padding: 5px;
+}
+
+/* Layout for social text, using flex to organize text vertically and align to the start. */
+.social-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Styling for the first paragraph in social text to use a specific color, emphasizing the primary text. */
+.social-text > p:first-child {
+  color: #7477BF;
+}
+
+/* Styling for the second paragraph in social text, setting a larger font size and darker color for emphasis. */
+.social-text > p:last-child {
+  color: rgb(88, 86, 86);
+  font-size: 2rem;
+}
+
+/* Flex container styling for new members and recent activity sections to display items in a column. */
+.new-members, 
+.recent-activity {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 2px solid darkgrey;
+}
+
+/* Aligns headings within the new members, recent activity, and social container sections to the start. */
+.new-members > h3, 
+.recent-activity > h3, 
+.social-container > h3 {
+  align-self: flex-start;
+}
+
+/* Styles for containers holding member details, ensuring they are centered and well-spaced. */
+.member-container {
+  background-color: white;
+  border-bottom: 1px solid darkgrey;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Styles for displaying activities, similar to member container but for activity listings. */
+.activity {
+  background-color: white;
+  border-bottom: 1px solid darkgrey;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Removes bottom border for the last activity item for a cleaner look at the end of the list. */
+.activity:last-of-type {
+  border-bottom: none;
+}
+
+/* Similarly removes the bottom border for the last member container in the new members section. */
+.new-members > .member-container:last-of-type {
+  border-bottom: none;
+}
+
+/* Central alignment for member photos within their containers. */
+.member-photo {
+  text-align: center;
+}
+
+/* Circular styling for member photos to make them visually appealing and consistent. */
+.member-photo img {
+  border-radius: 50%;
+  width: 65px; 
+  height: 65px;
+}
+
+/* Center alignment for text within member names and activity text, ensuring readability and focus. */
+.member-name p, .activity-text p {
+  text-align: center;
+}
+
+/* Initially hides links to activity to prevent visual clutter, showing them conditionally based on user interaction. */
+.link-to-activity {
+  visibility: hidden;
+}
+
+/* Basic padding and bottom border styling for the message user area, defining its space within the layout. */
+.message-user {
+  padding: 10px;
+  border-bottom: 1px solid darkgrey;
+  grid-area: message-user;
+}
+
+/* Styling for the search user field within message user area, including font, background, and border details for usability. */
+.search-user-field {
+  margin-top: 10px;
+  padding: 10px;
+  font-family: monospace;
+  background-color: #f2f2f2;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  width: 100%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Generic container for various widgets, using flexbox to arrange children in a column with space between them. */
+.widget-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Common styles for form fields and text areas, including padding, border, and background for consistency and readability. */
+.form-field,
+.form-area {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid lightgrey; /* Subtle border color */
+  background-color: #f2f2f2; /* Light gray background enhances readability */
+  color: #888; /* Dark gray text color for contrast */
+  font-family: monospace; /* Monospaced font for a uniform typographic look */
+}
+
+/* Allows the form area to be resizable both horizontally and vertically, with a fixed initial height. */
+.form-area {
+  resize: both;
+  height: 80px;
+}
+
+/* Primary button styles for actions, styled distinctively to stand out with interaction cues. */
+.button-primary {
+  padding: 10px;
+  color: #fff; /* White text for high contrast on colored background */
+  background-color: #7477BF; /* Consistent brand color */
+  border: 1px solid lightgrey;
+  border-radius: 4px; /* Rounded corners for a modern look */
+  cursor: pointer; /* Cursor change to indicate interactivity */
+}
+
+/* Hover effect for the primary button, changing background color to a darker blue for user feedback. */
+.button-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Container for settings-related elements, positioned using grid layout properties. */
+.settings {
+  margin-top: 10px;
+  padding: 10px;
+  grid-area: settings;
+}
+
+/* Flex container for checkbox elements, spacing items out between start and end of the container. */
+.checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Right-aligned text for elements inside the checkbox container, typically for labels or instructions. */
+.checkbox-right {
+  text-align: right;
+}
+
+/* Ensures form fields are centered and maintain a consistent look and feel with the rest of the form elements. */
+.form-field {
+  display: flex;
+  justify-content: center;
+  background-color: lightgrey;
+  border-color: darkgrey;
+  width: 100%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Flex container for timezone selection, ensuring the selector is centrally aligned. */
+.timezone-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for timezone select element, with custom dimensions and margins to fit within its container appropriately. */
+.timezone {
+  width: 90%;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Option styling within the timezone select, using brand colors for consistency. */
+.timezone option {
+  color: #7477BF;
+  background-color: lightgrey;
+}
+
+/* Container for buttons within settings, spaced evenly and centered. */
+.settings-buttons {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Styles for the save button, using consistent theming with the rest of the form elements. */
+.button-save {
+  width: 45%;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  background-color: #7477BF;
+}
+
+/* Hover effects for both save and cancel buttons, providing visual feedback through color change. */
+.button-save:hover, .button-cancel:hover {
+  background-color: #0056b3;
+}
+
+/* Cancel button styles, similar to save but with a different background color to differentiate the action. */
+.button-cancel {
+  width: 45%;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  background-color: darkgrey;
+}
+
+/* Responsive design settings for screens wider than 768 pixels, adjusting grid areas and layout for the main content and navigation. */
+@media (min-width: 768px) {
+  body {
+    grid-template-areas:
+      'header header'
+      'nav main';
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 50px 1fr; 
+  }
+
+  /* Changes navigation list to a column layout for vertical alignment of items. */
+  nav ul {
+    flex-direction: column; 
+  }
+
+  /* Adds bottom margin to list items in navigation to space them out in the column layout. */
+  nav ul li {
+    margin-bottom: 20px; 
+  }
+
+  /* Configures the main area to use a two-column grid layout for better organization of content at larger screen widths. */
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-areas:
+      'dashboard-top dashboard-top'
+      'alert-banner alert-banner'
+      'traffic traffic'
+      'daily mobile'
+      'social-container social-container'
+      'new-members new-members'
+      'recent-activity recent-activity'
+      'message-user message-user'
+      'settings settings'
+      'time-and-buttons time-and-buttons';
+  }
+
+  /* Styling for the popup window for higher resolution screens with specific positioning and size. */
+#popupWindow {
+  position: absolute;
+  top: 5vw; /* Vertically positions at 5% of the viewport width from the top */
+  left: 40vw; /* Horizontally positions at 40% of the viewport width from the left */
+  height: 40vw; /* Height set as 40% of the viewport width to maintain aspect ratio */
+  width: 40vw; /* Width set as 40% of the viewport width */
+}
+
+/* Adjusts the content alignment of the alert banner to space items evenly across the space. */
+.alert-banner {
+  justify-content: space-between;
+}
+
+/* Flexbox layout for the traffic section header for responsive alignment of its children. */
+.traffic-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Styling for the navigation within the traffic section to align items to the end of the container. */
+.traffic-nav {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+/* Additional border styles for the daily and mobile widgets to visually separate them. */
+.daily {
+  border-right: 1px solid darkgrey;
+  border-bottom: 1px solid darkgrey;
+}
+
+.mobile {
+  border-bottom: 1px solid darkgrey;
+}
+
+/* Margin styling for headings within widget sections to ensure visual consistency and spacing. */
+.daily h3, .mobile h3, .new-members h3, .recent-activity h3 {
+  margin-top: 10px;
+}
+
+/* Flexbox layout for the daily traffic widget to organize content in a column and align it from the start. */
+.daily-traffic-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+/* Similar layout adjustments for the mobile traffic wrapper. */
+.mobile-traffic-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+/* Styling adjustments for widget containers, removing borders and padding for a cleaner look. */
+.widget-container-half {
+  border: 0;
+  padding: 0;
+}
+
+/* Text alignment for member names and activity descriptions to improve readability. */
+.member-name p, .activity-text p {
+  text-align: left;
+}
+
+/* Layout adjustments for social cards to display them in a row with space around each card. */
+.social-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Individual social card styling, defining size and padding for uniformity. */
+.social-card {
+  width: 30%;
+  padding: 1px;
+}
+
+/* Flexbox layout for member containers to evenly distribute space and align items centrally. */
+.member-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Ensures member photos are aligned at the start of the container and centered vertically. */
+.member-photo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Column layout for member names to stack names and details vertically. */
+.member-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 10px;
+}
+
+/* Flex layout for activity entries, spacing content between start and end of the container. */
+.activity {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Margin left for activity text to separate it visually from images or icons. */
+.activity-text {
+  margin-left: 10px;
+}
+
+/* Ensures the link to activity details is always centered within its container. */
+.link-to-activity {
+  align-self: center;
+  visibility: visible;
+}
+
+/* Flexbox layout for the time and buttons section, organizing items in a column for better structure. */
+.time-and-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  grid-area: time-and-buttons;
+}
+
+/* Full width for the timezone container to ensure it fills its parent container. */
+.timezone-container {
+  width: 100%;
+}
+
+/* Flex layout for settings buttons to space them out evenly. */
+.settings-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Styles for the save button, defining its size and right margin for spacing from the cancel button. */
+.button-save {
+  width: 45%;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  background-color: #7477BF;
+  margin-right: 20px;
+}
+
+/* Responsive design adjustments for screens wider than 1024 pixels, specifying the layout of the main content areas. */
+@media (min-width: 1024px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'dashboard-top dashboard-top'
+      'alert-banner alert-banner'
+      'traffic traffic'
+      'daily mobile'
+      'social-container social-container'
+      'new-members recent-activity'
+      'message-user settings'
+      'message-user time-and-buttons';
+  }
+
+  /* Additional positioning for the popup window in wider screens, adjusting its location and size for better visibility. */
+  #popupWindow {
+    position: absolute;
+    top: 5vw; 
+    right: 5vw; 
+    height: 25vw;
+    width: 40vw;
+  }
+
+  /* Styling adjustments for the time and buttons section, adding a bottom border for separation. */
+  .time-and-buttons {
+    border-bottom: 1px solid darkgrey;
+  }
+
+  /* Right border for new members and message user sections to visually separate them from adjacent content. */
+  .new-members, .message-user {
+    border-right: 1px solid darkgrey;
+  }
+}
+}
