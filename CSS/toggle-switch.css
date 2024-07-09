@@ -1,0 +1,563 @@
+@charset "UTF-8";
+
+/* General styling and theme configurations for toggle switches */
+
+/* Hide toggle switch elements by default */
+.switch-toggle a,
+.switch-light span span {
+  display: none; /* Hide elements */
+}
+
+/* Base styles for toggle switches, only applied if media queries are supported */
+@media only screen {
+  .switch-light {
+    position: relative; /* Position relative for nested elements */
+    display: block; /* Display block */
+  }
+  .switch-light::after {
+    clear: both; /* Clear floats */
+    content: ''; /* Clearfix content */
+    display: table; /* Clearfix table */
+  }
+  .switch-light *,
+  .switch-light *:before,
+  .switch-light *:after {
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+  .switch-light a {
+    display: block; /* Display block */
+    transition: all 0.2s ease-out; /* Smooth transition */
+  }
+  .switch-light label,
+  .switch-light > span {
+    line-height: 2em; /* Set line height */
+  }
+  .switch-light input:focus ~ span a,
+  .switch-light input:focus + label {
+    outline-width: 2px; /* Outline width */
+    outline-style: solid; /* Outline style */
+    outline-color: Highlight; /* Outline color */
+  }
+}
+
+/* Webkit specific focus outline color */
+@media only screen and (-webkit-min-device-pixel-ratio: 0) {
+  .switch-light input:focus ~ span a,
+  .switch-light input:focus + label {
+    outline-color: -webkit-focus-ring-color; /* Webkit focus ring color */
+    outline-style: auto; /* Auto outline style */
+  }
+}
+
+@media only screen {
+  .switch-light input {
+    position: absolute; /* Position absolute */
+    opacity: 0; /* Hide input */
+    z-index: 3; /* Stack on top */
+  }
+  .switch-light input:checked ~ span a {
+    right: 0%; /* Move to the right on check */
+  }
+  .switch-light strong {
+    font-weight: inherit; /* Inherit font weight */
+  }
+  .switch-light > span {
+    position: relative; /* Position relative for nested elements */
+    overflow: hidden; /* Hide overflow */
+    display: block; /* Display block */
+    min-height: 2em; /* Minimum height */
+    padding: 0; /* Remove padding */
+    text-align: left; /* Left text align */
+  }
+  .switch-light span span {
+    position: relative; /* Position relative */
+    z-index: 2; /* Stack on top */
+    display: block; /* Display block */
+    float: left; /* Float left */
+    width: 50%; /* 50% width */
+    text-align: center; /* Center text align */
+    user-select: none; /* Disable text selection */
+  }
+  .switch-light a {
+    position: absolute; /* Position absolute */
+    right: 50%; /* Move to the right */
+    top: 0; /* Top position */
+    z-index: 1; /* Stack below */
+    display: block; /* Display block */
+    width: 50%; /* 50% width */
+    height: 100%; /* Full height */
+    padding: 0; /* Remove padding */
+  }
+  .switch-light.row {
+    display: flex; /* Flexbox layout */
+  }
+  .switch-light .alert-light {
+    color: #333; /* Set text color */
+  }
+  .switch-toggle {
+    position: relative; /* Position relative */
+    display: block; /* Display block */
+    padding: 0 !important; /* Remove padding */
+  }
+  .switch-toggle::after {
+    clear: both; /* Clear floats */
+    content: ''; /* Clearfix content */
+    display: table; /* Clearfix table */
+  }
+  .switch-toggle *,
+  .switch-toggle *:before,
+  .switch-toggle *:after {
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+  .switch-toggle a {
+    display: block; /* Display block */
+    transition: all 0.2s ease-out; /* Smooth transition */
+  }
+  .switch-toggle label,
+  .switch-toggle > span {
+    line-height: 2em; /* Set line height */
+  }
+  .switch-toggle input:focus ~ span a,
+  .switch-toggle input:focus + label {
+    outline-width: 2px; /* Outline width */
+    outline-style: solid; /* Outline style */
+    outline-color: Highlight; /* Outline color */
+  }
+}
+
+/* Webkit specific focus outline color */
+@media only screen and (-webkit-min-device-pixel-ratio: 0) {
+  .switch-toggle input:focus ~ span a,
+  .switch-toggle input:focus + label {
+    outline-color: -webkit-focus-ring-color; /* Webkit focus ring color */
+    outline-style: auto; /* Auto outline style */
+  }
+}
+
+@media only screen {
+  .switch-toggle input {
+    position: absolute; /* Position absolute */
+    left: 0; /* Left position */
+    opacity: 0; /* Hide input */
+  }
+  .switch-toggle input + label {
+    position: relative; /* Position relative */
+    z-index: 2; /* Stack on top */
+    display: block; /* Display block */
+    float: left; /* Float left */
+    padding: 0 0.5em; /* Add padding */
+    margin: 0; /* Remove margin */
+    text-align: center; /* Center text align */
+  }
+  .switch-toggle a {
+    position: absolute; /* Position absolute */
+    top: 0; /* Top position */
+    left: 0; /* Left position */
+    padding: 0; /* Remove padding */
+    z-index: 1; /* Stack below */
+    width: 10px; /* Set width */
+    height: 100%; /* Full height */
+  }
+  /* Width and position adjustments based on the number of options */
+  .switch-toggle label:nth-child(2):nth-last-child(4),
+  .switch-toggle label:nth-child(2):nth-last-child(4) ~ label,
+  .switch-toggle label:nth-child(2):nth-last-child(4) ~ a {
+    width: 50%; /* 50% width */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(4) ~ input:checked:nth-child(3) + label ~ a {
+    left: 50%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(6),
+  .switch-toggle label:nth-child(2):nth-last-child(6) ~ label,
+  .switch-toggle label:nth-child(2):nth-last-child(6) ~ a {
+    width: 33.33%; /* 33.33% width */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(6) ~ input:checked:nth-child(3) + label ~ a {
+    left: 33.33%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(6) ~ input:checked:nth-child(5) + label ~ a {
+    left: 66.66%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(8),
+  .switch-toggle label:nth-child(2):nth-last-child(8) ~ label,
+  .switch-toggle label:nth-child(2):nth-last-child(8) ~ a {
+    width: 25%; /* 25% width */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(3) + label ~ a {
+    left: 25%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(5) + label ~ a {
+    left: 50%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(7) + label ~ a {
+    left: 75%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(10),
+  .switch-toggle label:nth-child(2):nth-last-child(10) ~ label,
+  .switch-toggle label:nth-child(2):nth-last-child(10) ~ a {
+    width: 20%; /* 20% width */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(10) ~ input:checked:nth-child(3) + label ~ a {
+    left: 20%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(10) ~ input:checked:nth-child(5) + label ~ a {
+    left: 40%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(10) ~ input:checked:nth-child(7) + label ~ a {
+    left: 60%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(10) ~ input:checked:nth-child(9) + label ~ a {
+    left: 80%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(12),
+  .switch-toggle label:nth-child(2):nth-last-child(12) ~ label,
+  .switch-toggle label:nth-child(2):nth-last-child(12) ~ a {
+    width: 16.6%; /* 16.6% width */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(12) ~ input:checked:nth-child(3) + label ~ a {
+    left: 16.6%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(12) ~ input:checked:nth-child(5) + label ~ a {
+    left: 33.2%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(12) ~ input:checked:nth-child(7) + label ~ a {
+    left: 49.8%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(12) ~ input:checked:nth-child(9) + label ~ a {
+    left: 66.4%; /* Move to the left on check */
+  }
+  .switch-toggle label:nth-child(2):nth-last-child(12) ~ input:checked:nth-child(11) + label ~ a {
+    left: 83%; /* Move to the left on check */
+  }
+
+  /* Candy Theme styling */
+  .switch-toggle.switch-candy,
+  .switch-light.switch-candy > span {
+    background-color: #2d3035; /* Candy theme background color */
+    border-radius: 3px; /* Border radius */
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.2); /* Box shadow */
+  }
+  .switch-light.switch-candy span span,
+  .switch-light.switch-candy input:checked ~ span span:first-child,
+  .switch-toggle.switch-candy label {
+    color: #fff; /* Text color */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center text align */
+    text-shadow: 1px 1px 1px #191b1e; /* Text shadow */
+  }
+  .switch-light.switch-candy input ~ span span:first-child,
+  .switch-light.switch-candy input:checked ~ span span:nth-child(2),
+  .switch-candy input:checked + label {
+    color: #333; /* Text color */
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); /* Text shadow */
+  }
+  .switch-candy a {
+    border: 1px solid #333; /* Border */
+    border-radius: 3px; /* Border radius */
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45); /* Box shadow */
+    background-color: #70c66b; /* Background color */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), transparent); /* Gradient background */
+  }
+  .switch-candy-blue a {
+    background-color: #38a3d4; /* Blue background color */
+  }
+  .switch-candy-yellow a {
+    background-color: #f5e560; /* Yellow background color */
+  }
+
+  /* iOS Theme styling */
+  .switch-ios.switch-light span span {
+    color: #888b92; /* Text color */
+  }
+  .switch-ios.switch-light a {
+    left: 0; /* Left position */
+    top: 0; /* Top position */
+    width: 2em; /* Set width */
+    height: 2em; /* Set height */
+    background-color: #fff; /* Background color */
+    border-radius: 100%; /* Full border radius */
+    border: 0.25em solid #D8D9DB; /* Border */
+    transition: all 0.2s ease-out; /* Smooth transition */
+  }
+  .switch-ios.switch-light > span {
+    display: block; /* Display block */
+    width: 100%; /* Full width */
+    height: 2em; /* Set height */
+    background-color: #D8D9DB; /* Background color */
+    border-radius: 1.75em; /* Border radius */
+    transition: all 0.4s ease-out; /* Smooth transition */
+  }
+  .switch-ios.switch-light > span span {
+    position: absolute; /* Position absolute */
+    top: 0; /* Top position */
+    left: 0; /* Left position */
+    width: 100%; /* Full width */
+    opacity: 0; /* Hide element */
+    line-height: 1.875em; /* Line height */
+    vertical-align: middle; /* Center vertically */
+    transition: all 0.2s ease-out; /* Smooth transition */
+  }
+  .switch-ios.switch-light > span span:first-of-type {
+    opacity: 1; /* Show element */
+    padding-left: 1.875em; /* Left padding */
+  }
+  .switch-ios.switch-light > span span:last-of-type {
+    padding-right: 1.875em; /* Right padding */
+  }
+  .switch-ios.switch-light input:checked ~ span a {
+    left: 100%; /* Move to the left on check */
+    border-color: rgba(116, 116, 233, 0.97); /* Border color */
+    margin-left: -2em; /* Left margin */
+  }
+  .switch-ios.switch-light input:checked ~ span {
+    border-color: rgba(116, 116, 233, 0.97); /* Border color */
+    box-shadow: inset 0 0 0 30px rgba(116, 116, 233, 0.97); /* Box shadow */
+  }
+  .switch-ios.switch-light input:checked ~ span span:first-of-type {
+    opacity: 0; /* Hide element */
+  }
+  .switch-ios.switch-light input:checked ~ span span:last-of-type {
+    opacity: 1; /* Show element */
+    color: #fff; /* Text color */
+  }
+  .switch-ios.switch-toggle {
+    background-color: #D8D9DB; /* Background color */
+    border-radius: 30px; /* Border radius */
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0; /* Box shadow */
+  }
+  .switch-ios.switch-toggle a {
+    background-color: rgba(116, 116, 233, 0.97); /* Background color */
+    border: 0.125em solid #D8D9DB; /* Border */
+    border-radius: 1.75em; /* Border radius */
+    transition: all 0.12s ease-out; /* Smooth transition */
+  }
+  .switch-ios.switch-toggle label {
+    height: 2.4em; /* Set height */
+    color: #888b92; /* Text color */
+    line-height: 2.4em; /* Line height */
+    vertical-align: middle; /* Center vertically */
+  }
+  .switch-ios input:checked + label {
+    color: #3e4043; /* Text color */
+  }
+
+  /* Holo Theme styling */
+  .switch-toggle.switch-holo,
+  .switch-light.switch-holo > span {
+    background-color: #464747; /* Background color */
+    border-radius: 1px; /* Border radius */
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0; /* Box shadow */
+    color: #fff; /* Text color */
+    text-transform: uppercase; /* Uppercase text */
+  }
+  .switch-holo label {
+    color: #fff; /* Text color */
+  }
+  .switch-holo > span span {
+    opacity: 0; /* Hide element */
+    transition: all 0.1s; /* Smooth transition */
+  }
+  .switch-holo > span span:first-of-type {
+    opacity: 1; /* Show element */
+  }
+  .switch-holo > span span,
+  .switch-holo label {
+    font-size: 85%; /* Font size */
+    line-height: 2.15625em; /* Line height */
+  }
+  .switch-holo a {
+    background-color: #666; /* Background color */
+    border-radius: 1px; /* Border radius */
+    box-shadow: inset rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.3) 0 -1px 0; /* Box shadow */
+  }
+  .switch-holo.switch-light input:checked ~ span a {
+    background-color: #0E88B1; /* Background color */
+  }
+  .switch-holo.switch-light input:checked ~ span span:first-of-type {
+    opacity: 0; /* Hide element */
+  }
+  .switch-holo.switch-light input:checked ~ span span:last-of-type {
+    opacity: 1; /* Show element */
+  }
+
+  /* Material Theme styling */
+  .switch-light.switch-material a {
+    top: -0.1875em; /* Top position */
+    width: 1.75em; /* Set width */
+    height: 1.75em; /* Set height */
+    border-radius: 50%; /* Full border radius */
+    background: #fafafa; /* Background color */
+    box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.14), 0 0.1875em 0.125em -0.125em rgba(0, 0, 0, 0.2), 0 0.125em 0.25em 0 rgba(0, 0, 0, 0.12); /* Box shadow */
+    transition: right 0.28s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transition */
+  }
+  .switch-material.switch-light {
+    overflow: visible; /* Show overflow */
+  }
+  .switch-material.switch-light::after {
+    clear: both; /* Clear floats */
+    content: ''; /* Clearfix content */
+    display: table; /* Clearfix table */
+  }
+  .switch-material.switch-light > span {
+    overflow: visible; /* Show overflow */
+    position: relative; /* Position relative */
+    top: 0.1875em; /* Top position */
+    width: 3.25em; /* Set width */
+    height: 1.5em; /* Set height */
+    min-height: auto; /* Auto minimum height */
+    border-radius: 1em; /* Border radius */
+    background: rgba(0, 0, 0, 0.26); /* Background color */
+  }
+  .switch-material.switch-light span span {
+    position: absolute; /* Position absolute */
+    clip: rect(0 0 0 0); /* Clip element */
+  }
+  .switch-material.switch-light input:checked ~ span a {
+    right: 0; /* Right position on check */
+    background: #3f51b5; /* Background color */
+    box-shadow: 0 0.1875em 0.25em 0 rgba(0, 0, 0, 0.14), 0 0.1875em 0.1875em -0.125em rgba(0, 0, 0, 0.2), 0 0.0625em 0.375em 0 rgba(0, 0, 0, 0.12); /* Box shadow */
+  }
+  .switch-material.switch-light input:checked ~ span {
+    background: rgba(63, 81, 181, 0.5); /* Background color */
+  }
+  .switch-toggle.switch-material {
+    overflow: visible; /* Show overflow */
+  }
+  .switch-toggle.switch-material::after {
+    clear: both; /* Clear floats */
+    content: ''; /* Clearfix content */
+    display: table; /* Clearfix table */
+  }
+  .switch-toggle.switch-material a {
+    top: 48%; /* Top position */
+    width: 0.375em !important; /* Set width */
+    height: 0.375em; /* Set height */
+    margin-left: 0.25em; /* Left margin */
+    background: #3f51b5; /* Background color */
+    border-radius: 100%; /* Full border radius */
+    transform: translateY(-50%); /* Center vertically */
+    transition: transform 0.4s ease-in; /* Smooth transition */
+  }
+  .switch-toggle.switch-material label {
+    color: rgba(0, 0, 0, 0.54); /* Text color */
+    font-size: 1em; /* Font size */
+  }
+  .switch-toggle.switch-material label:before {
+    content: ''; /* Content before element */
+    position: absolute; /* Position absolute */
+    top: 48%; /* Top position */
+    left: 0; /* Left position */
+    display: block; /* Display block */
+    width: 0.875em; /* Set width */
+    height: 0.875em; /* Set height */
+    border-radius: 100%; /* Full border radius */
+    border: 0.125em solid rgba(0, 0, 0, 0.54); /* Border */
+    transform: translateY(-50%); /* Center vertically */
+  }
+  .switch-toggle.switch-material input:checked + label:before {
+    border-color: #3f51b5; /* Border color on check */
+  }
+  .switch-light.switch-material > span:before,
+  .switch-light.switch-material > span:after,
+  .switch-toggle.switch-material label:after {
+    content: ''; /* Content after element */
+    position: absolute; /* Position absolute */
+    top: 0; /* Top position */
+    left: 0; /* Left position */
+    z-index: 3; /* Stack on top */
+    display: block; /* Display block */
+    width: 4em; /* Set width */
+    height: 4em; /* Set height */
+    border-radius: 100%; /* Full border radius */
+    background: #3f51b5; /* Background color */
+    opacity: 0.4; /* Transparency */
+    margin-left: -1.25em; /* Left margin */
+    margin-top: -1.25em; /* Top margin */
+    transform: scale(0); /* Scale transform */
+    transition: opacity 0.4s ease-in; /* Smooth transition */
+  }
+  .switch-light.switch-material > span:after {
+    left: auto; /* Auto left position */
+    right: 0; /* Right position */
+    margin-left: 0; /* Remove left margin */
+    margin-right: -1.25em; /* Right margin */
+  }
+  .switch-toggle.switch-material label:after {
+    width: 3.25em; /* Set width */
+    height: 3.25em; /* Set height */
+    margin-top: -0.75em; /* Top margin */
+  }
+
+  /* Define the standard and vendor-prefixed keyframes */
+  @keyframes materialRipple {
+    0% {
+      transform: scale(0); /* Start scale transform */
+    }
+    20% {
+      transform: scale(1); /* Intermediate scale transform */
+    }
+    100% {
+      opacity: 0; /* End opacity */
+      transform: scale(1); /* End scale transform */
+    }
+  }
+  @-webkit-keyframes materialRipple {
+    0% {
+      transform: scale(0); /* Start scale transform */
+    }
+    20% {
+      transform: scale(1); /* Intermediate scale transform */
+    }
+    100% {
+      opacity: 0; /* End opacity */
+      transform: scale(1); /* End scale transform */
+    }
+  }
+
+  /* Apply the ripple animation to the switches */
+  .switch-material.switch-light input:not(:checked) ~ span:after,
+  .switch-material.switch-light input:checked ~ span:before,
+  .switch-toggle.switch-material input:checked + label:after {
+    animation: materialRipple 0.4s ease-in; /* Ripple animation */
+    -webkit-animation: materialRipple 0.4s ease-in; /* Webkit ripple animation */
+  }
+
+  /* Hide ripple animation on page load */
+  .switch-light.switch-material.switch-light input ~ span:before,
+  .switch-light.switch-material.switch-light input ~ span:after,
+  .switch-material.switch-toggle input + label:after {
+    visibility: hidden; /* Hide element */
+  }
+  .switch-light.switch-material.switch-light input:focus:checked ~ span:before,
+  .switch-light.switch-material.switch-light input:focus:not(:checked) ~ span:after,
+  .switch-material.switch-toggle input:focus:checked + label:after {
+    visibility: visible; /* Show element on focus */
+  }
+}
+
+/* Bugfix for older Webkit, including mobile Webkit */
+@media only screen and (-webkit-max-device-pixel-ratio: 2) and (max-device-width: 80em) {
+  .switch-light,
+  .switch-toggle {
+    -webkit-animation: webkitSiblingBugfix infinite 1s; /* Webkit animation bugfix */
+    animation: webkitSiblingBugfix infinite 1s; /* Animation bugfix */
+  }
+}
+
+@-webkit-keyframes webkitSiblingBugfix {
+  from {
+    -webkit-transform: translate3d(0, 0, 0); /* Webkit transform bugfix */
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0); /* Webkit transform bugfix */
+  }
+}
+
+@keyframes webkitSiblingBugfix {
+  from {
+    transform: translate3d(0, 0, 0); /* Transform bugfix */
+  }
+  to {
+    transform: translate3d(0, 0, 0); /* Transform bugfix */
+  }
+}
