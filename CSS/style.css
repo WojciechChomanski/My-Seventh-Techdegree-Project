@@ -65,7 +65,7 @@ header span {
   display: flex; /* Use flexbox layout */
   margin-right: 15px; /* Add right margin */
   width: 25px; /* Set width */
-  height: 50px; /* Set height */
+  height: 25px; /* Set height */
   fill: var(--color-fill); /* Set fill color */
   user-select: none; /* Disable text selection */
 }
@@ -110,8 +110,8 @@ svg {
 
 .badge {
   position: absolute; /* Position absolutely */
-  top: 17px; /* Set top position */
-  right: 171px; /* Set right position */
+  top: 10px; /* Set top position */
+  right: 10px; /* Set right position */
   padding: 2px 5px; /* Add padding */
   border-radius: 50%; /* Round badge */
   background-color: red; /* Set background color */
@@ -127,7 +127,7 @@ svg {
   background-color: rgb(165, 231, 121); /* Set background color */
   position: absolute; /* Position absolutely */
   top: 45px; /* Set top position */
-  right: 145px; /* Set right position */
+  right: 0; /* Set right position */
   border-radius: 5px; /* Round corners */
 }
 
@@ -154,14 +154,13 @@ header h3 {
 .bar-chart,
 .members-icon,
 .settings-icon {
-  width: 50px; /* Set width */
-  height: 50px; /* Set height */
-  padding-top: 20px; /* Add top padding */
+  width: 30px; /* Set width */
+  height: 30px; /* Set height */
   color: #c01717; /* Set color */
 }
 
 .profile {
-  border-left: var(--color-border) 0.5px solid; /* Add left border */
+  border-left: var(--color-border) 1px solid; /* Add left border */
   display: flex; /* Use flexbox layout */
   align-items: center; /* Center align items */
 }
@@ -169,13 +168,13 @@ header h3 {
 #profile-image {
   border-radius: 50%; /* Round image */
   margin: 0 10px; /* Add margin */
-  width: 60px; /* Set width */
-  height: 60px; /* Set height */
-  transition: all .5s; /* Add transition */
+  width: 40px; /* Set width */
+  height: 40px; /* Set height */
+  transition: all .3s; /* Add transition */
 }
 
 #profile-image:hover {
-  transform: scale(2) rotate(10deg); /* Scale and rotate on hover */
+  transform: scale(1.5) rotate(10deg); /* Scale and rotate on hover */
 }
 
 nav {
@@ -536,8 +535,8 @@ select {
   .bar-chart,
   .members-icon,
   .settings-icon {
-    width: 50px; /* Set width */
-    height: 50px; /* Set height */
+    width: 40px; /* Set width */
+    height: 40px; /* Set height */
     padding-top: 20px; /* Add top padding */
     color: #c01717; /* Set color */
   }
